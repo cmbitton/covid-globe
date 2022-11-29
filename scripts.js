@@ -18,10 +18,10 @@ am5.ready(function () {
         panX: "rotateX",
         panY: "rotateY",
         projection: am5map.geoOrthographic(),
-        paddingBottom: 20,
-        paddingTop: 20,
-        paddingLeft: 20,
-        paddingRight: 20
+        paddingBottom: 0,
+        paddingTop: 0,
+        paddingLeft: 0,
+        paddingRight: 0
     }));
 
 
@@ -109,27 +109,29 @@ am5.ready(function () {
         }
     }
 
-    //set up click event to display country name
+    //set up click event to display country name (custom script)
     const results = document.querySelector('.results-container');
+    const resultHeader = results.querySelector('h2')
 
     polygonSeries.mapPolygons.template.events.on('click', function () {
         const selectedCountry = document.querySelector('div[role="tooltip"]');
         if (selectedCountry) {
-            results.textContent = selectedCountry.textContent;
+            resultHeader.textContent = selectedCountry.textContent;
         }
     })
+    // end of custom script
 
     // Set up events for US
 
-    //set up click event for US
+    //set up click event for US (custom script)
 
     polygonSeriesUS.mapPolygons.template.events.on('click', function () {
         const selectedCountry = document.querySelector('div[role="tooltip"]');
         if (selectedCountry) {
-            results.textContent = selectedCountry.textContent;
+            resultHeader.textContent = selectedCountry.textContent;
         }
     })
-
+    // end of custom script
     polygonSeriesUS.mapPolygons.template.on("active", function (active, target) {
         if (previousPolygon && previousPolygon != target) {
             previousPolygon.set("active", false);
