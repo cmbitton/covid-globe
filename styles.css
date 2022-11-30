@@ -34,20 +34,25 @@ body{
     width: 90%;
     box-sizing: border-box;
     margin: auto;
+    text-align: left;
   }
   h3{
     font-size: 1.5rem;
   }
-  h3, p.total-cases {
-    text-align: left;
-  }
-  p.total-cases{
+  p.total-cases, p.new-cases, p.active-cases, p.recovered-cases, p.critical-cases{
     display: flex;
     justify-content: space-between;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
-  .total-case-number{
-    width: 50%;
+  .total-case-number, .new-case-number, .active-case-number, .recovered-case-number, .critical-case-number{
+    width: 45%;
     text-align: center;
     color: #333;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .new-case-number{
+    color: green;
+
   }

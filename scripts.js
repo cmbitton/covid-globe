@@ -1,17 +1,39 @@
 function displayCountryData(data) {
 const results = document.querySelector('.stats-container');
 results.innerHTML = '';
+
 const casesContainer = document.createElement('div');
-const totalCases = document.createElement('p');
 const casesHeader = document.createElement('h3');
+const totalCases = document.createElement('p');
+const newCases = document.createElement('p');
+const activeCases = document.createElement('p');
+const recoveredCases = document.createElement('p');
+const criticalCases = document.createElement('p');
+
+
 casesHeader.classList.add('cases-header');
 casesHeader.textContent = 'Cases';
+
 casesContainer.classList.add('cases-container');
 totalCases.classList.add('total-cases');
+newCases.classList.add('new-cases');
+activeCases.classList.add('active-cases');
+recoveredCases.classList.add('recovered-cases');
+criticalCases.classList.add('critical-cases');
+
 casesContainer.append(casesHeader);
+casesContainer.append(newCases);
+casesContainer.append(activeCases);
+casesContainer.append(criticalCases);
+casesContainer.append(recoveredCases);
 casesContainer.append(totalCases);
+
 results.append(casesContainer);
-totalCases.innerHTML = `Total Cases: <span class='total-case-number'>${data.cases.total.toLocaleString()}</span>`;
+totalCases.innerHTML = `Total: <span class='total-case-number'>${data.cases.total.toLocaleString()}</span>`;
+newCases.innerHTML = `New: <span class='new-case-number'>${data.cases.new === null ? 'null' : '+' + parseInt(data.cases.new).toLocaleString()}</span>`;
+activeCases.innerHTML = `Active: <span class='active-case-number'>${data.cases.active === null ? 'null' : data.cases.active.toLocaleString()}</span>`;
+criticalCases.innerHTML = `Critical: <span class='critical-case-number'>${data.cases.critical === null ? 'null' : data.cases.critical.toLocaleString()}</span>`;
+recoveredCases.innerHTML = `Recovered: <span class='recovered-case-number'>${data.cases.recovered.toLocaleString()}</span>`;
 console.log(data);
 }
 
