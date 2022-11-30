@@ -73,6 +73,7 @@ am5.ready(function () {
     polygonSeries.mapPolygons.template.setAll({
         tooltipText: "{name}",
         toggleKey: "active",
+        strokeWidth: 2,
         interactive: true
     });
 
@@ -94,6 +95,7 @@ am5.ready(function () {
     polygonSeriesUS.mapPolygons.template.setAll({
         tooltipText: "{name}",
         toggleKey: "active",
+        strokeWidth: 2,
         interactive: true
     });
 
