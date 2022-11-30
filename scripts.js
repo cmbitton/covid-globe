@@ -112,12 +112,24 @@ am5.ready(function () {
     //set up click event to display country name (custom script)
     const results = document.querySelector('.results-container');
     const resultHeader = results.querySelector('h2')
-
     polygonSeries.mapPolygons.template.events.on('click', function () {
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'aa46c0285emshc2e3dc0cac56061p159b49jsn22a03f2fdb16',
+                'X-RapidAPI-Host': 'covid-193.p.rapidapi.com'
+            }
+        };
         const selectedCountry = document.querySelector('div[role="tooltip"]');
         if (selectedCountry) {
             resultHeader.textContent = selectedCountry.textContent;
         }
+
+        fetch(`https://covid-193.p.rapidapi.com/statistics?country=${selectedCountry.textContent}`, options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+
     })
     // end of custom script
 
@@ -127,9 +139,29 @@ am5.ready(function () {
 
     polygonSeriesUS.mapPolygons.template.events.on('click', function () {
         const selectedCountry = document.querySelector('div[role="tooltip"]');
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'aa46c0285emshc2e3dc0cac56061p159b49jsn22a03f2fdb16',
+                'X-RapidAPI-Host': 'covid-19-statistics.p.rapidapi.com'
+            }
+        };
         if (selectedCountry) {
             resultHeader.textContent = selectedCountry.textContent;
         }
+
+        fetch(`https://covid-19-statistics.p.rapidapi.com/reports?q=${selectedCountry.textContent}`, options)
+            .then(response => response.json())
+            .then(response => {
+                //checks to make sure state name matches
+                for (const res of response.data) {
+                    if (res.region.province === selectedCountry.textContent) {
+                        console.log(res);
+                    }
+                }
+                console.log(response.data)
+            })
+            .catch(err => console.error(err));
     })
     // end of custom script
     polygonSeriesUS.mapPolygons.template.on("active", function (active, target) {
