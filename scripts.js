@@ -34,6 +34,7 @@ am5.ready(function () {
     var chart = root.container.children.push(am5map.MapChart.new(root, {
         panX: "rotateX",
         panY: "rotateY",
+        maxPanOut: 0,
         projection: am5map.geoOrthographic(),
         paddingBottom: 0,
         paddingTop: 0,
@@ -218,7 +219,4 @@ am5.ready(function () {
     // Make stuff animate on load
     chart.appear(1000, 100);
 
-
-    chart.seriesContainer.draggable = false;
-    chart.seriesContainer.resizable = false;
 }); // end am5.ready()
