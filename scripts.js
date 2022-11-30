@@ -41,9 +41,8 @@ am5.ready(function () {
         paddingRight: 0
     }));
 
-    chart.seriesContainer.draggable = false;
-    chart.seriesContainer.resizable = false;
-    
+
+
     // Create main polygon series for countries
     // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
     var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
@@ -219,4 +218,7 @@ am5.ready(function () {
     // Make stuff animate on load
     chart.appear(1000, 100);
 
+
+    chart.seriesContainer.draggable = false;
+    chart.seriesContainer.resizable = false;
 }); // end am5.ready()
