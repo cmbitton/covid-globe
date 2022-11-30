@@ -6,8 +6,11 @@ body{
     height: 50vh;
     max-width: 100%;
   }
-
+  canvas{
+    border-radius: 25px;
+  }
   .results-container{
+    box-sizing: border-box;
     text-align: center;
     width: 100%;
     margin-top: 25px;
@@ -15,4 +18,36 @@ body{
     border: thin solid gray;
     border-radius: 5px;
     background-color: #EEEEEE;
+    font-family: 'Questrial', sans-serif;
+    letter-spacing: 3px;
+    color: #333
+  }
+
+  h2 {
+    width: 90%;
+    font-size: 2rem;
+    margin: 12px auto;
+    padding-bottom: 12px;
+    border-bottom: thin solid gray;
+  }
+  .cases-container{
+    width: 90%;
+    box-sizing: border-box;
+    margin: auto;
+  }
+  h3{
+    font-size: 1.5rem;
+  }
+  h3, p.total-cases {
+    text-align: left;
+  }
+  p.total-cases{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+  }
+  .total-case-number{
+    width: 50%;
+    text-align: center;
+    color: #333;
   }

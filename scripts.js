@@ -1,3 +1,20 @@
+function displayCountryData(data) {
+const results = document.querySelector('.stats-container');
+results.innerHTML = '';
+const casesContainer = document.createElement('div');
+const totalCases = document.createElement('p');
+const casesHeader = document.createElement('h3');
+casesHeader.classList.add('cases-header');
+casesHeader.textContent = 'Cases';
+casesContainer.classList.add('cases-container');
+totalCases.classList.add('total-cases');
+casesContainer.append(casesHeader);
+casesContainer.append(totalCases);
+results.append(casesContainer);
+totalCases.innerHTML = `Total Cases: <span class='total-case-number'>${data.cases.total.toLocaleString()}</span>`;
+console.log(data);
+}
+
 am5.ready(function () {
 
     // Create root element
@@ -124,11 +141,15 @@ am5.ready(function () {
         if (selectedCountry) {
             resultHeader.textContent = selectedCountry.textContent;
         }
-
-        fetch(`https://covid-193.p.rapidapi.com/statistics?country=${selectedCountry.textContent}`, options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+        const formatedCountryName = selectedCountry.textContent.split(' ').join('-');
+        //get country data from API
+        fetch(`https://covid-193.p.rapidapi.com/statistics?country=${formatedCountryName}`, options)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                displayCountryData(response.response[0])
+            })
+            .catch(err => console.error(err));
 
     })
     // end of custom script
