@@ -41,8 +41,26 @@ am5.ready(function () {
         paddingLeft: 0,
         paddingRight: 0
     }));
+    //button to reset map
+    let button = chart.children.push(am5.Button.new(root, {
+        dx: 225,
+        dy: 280,
+        paddingTop: 2,
+        paddingRight: 4,
+        paddingBottom: 2,
+        paddingLeft: 4,
+        label: am5.Label.new(root, {
+          text: "Reset Map"
+        })
+      }));
 
+      button.get("background").setAll({
+        fillOpacity: 0.8
+      });
 
+      button.events.on("click", function() {
+        chart.zoomToGeoPoint({longitude: 0, latitude: 0}, 1);
+      });
 
     // Create main polygon series for countries
     // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
