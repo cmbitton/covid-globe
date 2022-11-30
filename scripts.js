@@ -44,7 +44,7 @@ am5.ready(function () {
     //button to reset map
     let button = chart.children.push(am5.Button.new(root, {
         x: window.innerWidth - 150,
-        y: window.innerHeight - (0.57 * window.innerHeight),
+        y: window.innerHeight - (0.52 * window.innerHeight),
         paddingTop: 2,
         paddingRight: 4,
         paddingBottom: 2,
