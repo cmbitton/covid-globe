@@ -10,9 +10,16 @@ const activeCases = document.createElement('p');
 const recoveredCases = document.createElement('p');
 const criticalCases = document.createElement('p');
 
+const deathsContainer = document.createElement('div');
+const deathsHeader = document.createElement('h3');
+const totalDeaths = document.createElement('p');
+const newDeaths = document.createElement('p');
 
 casesHeader.classList.add('cases-header');
 casesHeader.textContent = 'Cases';
+
+deathsHeader.classList.add('deaths-header');
+deathsHeader.textContent = 'Deaths';
 
 casesContainer.classList.add('cases-container');
 totalCases.classList.add('total-cases');
@@ -21,6 +28,10 @@ activeCases.classList.add('active-cases');
 recoveredCases.classList.add('recovered-cases');
 criticalCases.classList.add('critical-cases');
 
+deathsContainer.classList.add('deaths-container');
+totalDeaths.classList.add('total-deaths');
+newDeaths.classList.add('new-deaths')
+
 casesContainer.append(casesHeader);
 casesContainer.append(newCases);
 casesContainer.append(activeCases);
@@ -28,12 +39,22 @@ casesContainer.append(criticalCases);
 casesContainer.append(recoveredCases);
 casesContainer.append(totalCases);
 
+deathsContainer.append(deathsHeader);
+deathsContainer.append(newDeaths);
+deathsContainer.append(totalDeaths);
+
+
 results.append(casesContainer);
+results.append(deathsContainer);
+
 totalCases.innerHTML = `Total: <span class='total-case-number'>${data.cases.total.toLocaleString()}</span>`;
 newCases.innerHTML = `New: <span class='new-case-number'>${data.cases.new === null ? 'null' : '+' + parseInt(data.cases.new).toLocaleString()}</span>`;
 activeCases.innerHTML = `Active: <span class='active-case-number'>${data.cases.active === null ? 'null' : data.cases.active.toLocaleString()}</span>`;
 criticalCases.innerHTML = `Critical: <span class='critical-case-number'>${data.cases.critical === null ? 'null' : data.cases.critical.toLocaleString()}</span>`;
 recoveredCases.innerHTML = `Recovered: <span class='recovered-case-number'>${data.cases.recovered.toLocaleString()}</span>`;
+
+newDeaths.innerHTML = `New: <span class='new-deaths-number'>${data.deaths.new === null ? 'null' : '+' + parseInt(data.deaths.new).toLocaleString()}</span>`;
+totalDeaths.innerHTML = `Total: <span class='total-deaths-number'>${data.deaths.total.toLocaleString()}</span>`;
 console.log(data);
 }
 
@@ -98,10 +119,11 @@ am5.ready(function () {
         strokeWidth: 2,
         interactive: true
     });
-
-    polygonSeries.mapPolygons.template.states.create("hover", {
-        fill: am5.color(0xFF8C42)
-    });
+    if (window.innerWidth > 700) {
+        polygonSeries.mapPolygons.template.states.create("hover", {
+            fill: am5.color(0xFF8C42)
+        });
+    }
 
     polygonSeries.mapPolygons.template.states.create("active", {
         fill: am5.color(0xFF8C42)
@@ -121,10 +143,11 @@ am5.ready(function () {
         interactive: true
     });
 
-
-    polygonSeriesUS.mapPolygons.template.states.create("hover", {
-        fill: am5.color(0xFF8C42)
-    });
+    if (window.innerWidth > 700) {
+        polygonSeriesUS.mapPolygons.template.states.create("hover", {
+            fill: am5.color(0xFF8C42)
+        });
+    }
 
     polygonSeriesUS.mapPolygons.template.states.create("active", {
         fill: am5.color(0xFF8C42)
@@ -221,7 +244,7 @@ am5.ready(function () {
             .then(response => {
                 //checks to make sure state name matches
                 for (const res of response.data) {
-                    if (res.region.province === selectedCountry.textContent) {
+                    if (res.region.province === resultHeader.textContent) {
                         console.log(res);
                     }
                 }

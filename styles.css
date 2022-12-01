@@ -30,7 +30,7 @@ body{
     padding-bottom: 12px;
     border-bottom: thin solid gray;
   }
-  .cases-container{
+  .cases-container, .deaths-container{
     width: 90%;
     box-sizing: border-box;
     margin: auto;
@@ -39,12 +39,24 @@ body{
   h3{
     font-size: 1.5rem;
   }
-  p.total-cases, p.new-cases, p.active-cases, p.recovered-cases, p.critical-cases{
+  p.total-cases, 
+  p.new-cases, 
+  p.active-cases, 
+  p.recovered-cases, 
+  p.critical-cases,
+  p.total-deaths,
+  p.new-deaths{
     display: flex;
     justify-content: space-between;
     font-size: 1.3rem;
   }
-  .total-case-number, .new-case-number, .active-case-number, .recovered-case-number, .critical-case-number{
+  .total-case-number, 
+  .new-case-number, 
+  .active-case-number, 
+  .recovered-case-number, 
+  .critical-case-number,
+  .total-deaths-number,
+  .new-deaths-number{
     width: 45%;
     text-align: center;
     color: #333;
@@ -52,7 +64,14 @@ body{
     font-weight: bold;
   }
 
-  .new-case-number{
+  .new-case-number, .new-deaths-number{
     color: green;
+  }
 
+  .deaths-header{
+    width: 90%;
+    margin: 24px auto;
+    padding-top: 24px;
+    text-align: left;
+    border-top: thin solid gray;
   }
