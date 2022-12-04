@@ -108,7 +108,10 @@ am5.ready(function () {
 
     //run gohome on load to reset display and resolve padding issue
     window.addEventListener('load', () => {
-        chart.goHome();
+        //need settimeout function to allow map to show after page reload for some reason
+        setTimeout(() => {
+            chart.goHome();
+        }, 0);
     });
 
     //run gohome on screensize change to recenter map
