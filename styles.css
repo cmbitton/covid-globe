@@ -8,6 +8,7 @@ body{
     max-width: 750px;
     border: 3px solid #333;
     border-radius: 30px;
+    box-shadow: 0px 0px 12px 3px rgb(187, 187, 187);
   }
 
   #chartdiv canvas, #chartdiv div{
@@ -27,7 +28,7 @@ body{
     height: fit-content;
     border: thin solid gray;
     border-radius: 5px;
-    background-color: #EEEEEE;
+    background-color: #469cff1e;
     font-family: 'Questrial', sans-serif;
     letter-spacing: 3px;
     color: #333
