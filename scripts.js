@@ -79,20 +79,20 @@ am5.ready(function () {
         panY: "rotateY",
         maxPanOut: 0,
         projection: am5map.geoOrthographic(),
-        paddingBottom: 0,
+        paddingBottom: 100,
         paddingTop: 0,
         paddingLeft: 0,
-        paddingRight: 0
+        paddingRight: 50
     }));
     //button to reset map
     let button = chart.children.push(am5.Button.new(root, {
         x: window.innerWidth - 150,
-        y: window.innerHeight - (0.52 * window.innerHeight),
+        y: window.innerHeight - (0.45 * window.innerHeight),
         paddingTop: 2,
         paddingRight: 4,
         paddingBottom: 2,
         paddingLeft: 4,
-        position: 'relative',
+        position: 'absolute',
         label: am5.Label.new(root, {
           text: "Reset Map"
         })
@@ -103,8 +103,20 @@ am5.ready(function () {
       });
 
       button.events.on("click", function() {
-        chart.zoomToGeoPoint({longitude: 0, latitude: 0}, 1);
+        chart.goHome();
       });
+
+    //run gohome on load to reset display and resolve padding issue
+    window.addEventListener('load', () => {
+        chart.goHome();
+    });
+
+    //run gohome on screensize change to recenter map
+    window.addEventListener('resize', () => {
+        setTimeout(() => {
+            chart.goHome();
+        }, 300);
+    });
 
     // Create main polygon series for countries
     // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
