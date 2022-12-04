@@ -132,7 +132,7 @@ am5.ready(function () {
             chart.goHome();
             button.set('x', buttonXcor());
             button.set('y', buttonYcor());
-        }, 300);
+        }, 0);
     });
 
     // Create main polygon series for countries
