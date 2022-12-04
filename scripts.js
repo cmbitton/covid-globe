@@ -84,10 +84,22 @@ am5.ready(function () {
         paddingLeft: 0,
         paddingRight: 50
     }));
+    //calculate location for reset map buton
+    const buttonXcor = () => {
+        const globe = document.querySelector('#chartdiv');
+        return globe.offsetWidth < 700 ? globe.offsetWidth - 115 : globe.offsetWidth - 120
+    }
+
+    const buttonYcor = () => {
+        const globe = document.querySelector('#chartdiv');
+        return globe.offsetWidth < 700 ? globe.offsetHeight - 50 : globe.offsetHeight - 60
+    }
+
+
     //button to reset map
     let button = chart.children.push(am5.Button.new(root, {
-        x: window.innerWidth - 150,
-        y: window.innerHeight - (0.45 * window.innerHeight),
+        x: buttonXcor(),
+        y: buttonYcor(),
         paddingTop: 2,
         paddingRight: 4,
         paddingBottom: 2,
