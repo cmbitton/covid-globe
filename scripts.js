@@ -130,6 +130,8 @@ am5.ready(function () {
     window.addEventListener('resize', () => {
         setTimeout(() => {
             chart.goHome();
+            button.set('x', buttonXcor());
+            button.set('y', buttonYcor());
         }, 300);
     });
 
